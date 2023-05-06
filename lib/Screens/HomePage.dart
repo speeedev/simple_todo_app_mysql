@@ -20,6 +20,11 @@ class _MySQLToDoListState extends State<MySQLToDoList> {
     super.initState();
     connectMysql();
   }
+  @override
+  void dispose() {
+    super.dispose();
+    connectMysql().ignore();
+  }
 
   Future<void> connectMysql() async {
     final conn = await MySqlConnection.connect(connectionString);
